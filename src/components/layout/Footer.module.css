@@ -1,0 +1,53 @@
+footer {
+    background: red;
+    margin-top: 100px;
+    padding: 30px 0;
+    padding-left: 5rem;
+}
+
+footer:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+footer ul {
+    float: left;
+    padding: 0;
+    list-style-type: none;
+    color: #eee;
+    width: 23%;
+    margin-right: 2%;
+}
+
+footer li {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #eee;
+    text-decoration: none;
+}
+
+@media screen and (max-width:700px) {
+    footer {
+        background: red;
+       
+    }
+    footer ul{
+        width: 48%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:482px) {
+    footer {
+        background: red;
+
+    }
+
+    footer ul {
+        width: 80%;
+        text-align: center;
+    }
+}

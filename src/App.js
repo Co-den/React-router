@@ -1,27 +1,32 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import AllQuotes from './pages/AllQuotes';
-import QuoteDetails from './pages/QuoteDetails';
-import NewQuote from './pages/NewQuote';
-import NotFound from './pages/NotFound';
-import Layout from './components/layout/Layout';
+import Header from './components/layout/Header';
+import Home from './pages/Home';
+import Footer from './components/layout/Footer';
+import NigerianFood from './pages/NigerianFood';
+import ForeignFood from './pages/ForeignFood';
+import MenuList from './pages/MenuList';
+import SignIn from './pages/Sign-in';
+import './App.css'
 
 
-
-
-function App() {
+const App = () => {
+  const isAuth = useSelector(state => state.auth.isAuthenticated);
   return (
-    <Layout>
-      <Routes>
-        <Route exact path='/quotes' element={<AllQuotes />} />
-        <Route path='/quotes/:quoteId' element={<QuoteDetails />} />
-        <Route path='/new-quotes' element={<NewQuote />} />
-        <Route path='*' element={<NotFound />} />
-       
-      </Routes>
-    </Layout>
+    <div className='body' >
+      <Header />
+      {!isAuth && <SignIn />}
+      {isAuth && <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/local' element={<NigerianFood />} />
+        <Route path='/foreign' element={<ForeignFood />} />
+        <Route path='/menu' element ={<MenuList/>}/>
+      </Routes>}
+      <Footer />
+    </div>
 
-
-  );
+  )
 }
 
 export default App;
